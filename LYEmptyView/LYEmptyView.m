@@ -145,6 +145,12 @@
     CGFloat originEmptyWidth = self.ly_width;
     CGFloat originEmptyHeight = self.ly_height;
     
+    if ( [self.superview isKindOfClass:[UIScrollView class]]) {
+        UIScrollView *scrollView = (UIScrollView *)self.superview;
+        originEmptyHeight -= scrollView.safeAreaInsets.bottom;
+        originEmptyHeight -= scrollView.safeAreaInsets.top;
+    }
+    
     CGFloat emptyViewCenterX = originEmptyWidth * 0.5f;
     CGFloat emptyViewCenterY = originEmptyHeight * 0.5f;
     
